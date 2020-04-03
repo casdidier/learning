@@ -4,33 +4,39 @@
 // I is misinterpreted as 1
 
 // easy but not efficient, going through 3 times over the string
-function correct(string) {
-    // replace 5 with S
-    string = string.replace(/5/g, 'S');
+// function correct(string) {
+//     // replace 5 with S
+//     string = string.replace(/5/g, 'S');
 
-    // replace 0 with O
-    string = string.replace(/0/g, 'O');
+//     // replace 0 with O
+//     string = string.replace(/0/g, 'O');
 
-    // replace 1 with I
-    string = string.replace(/1/g, 'I');
+//     // replace 1 with I
+//     string = string.replace(/1/g, 'I');
     
-    return string;
-}
+//     return string;
+// }
 
 // more efficient going once over the string 
-function correct(string) {
-    return string.replace(/5|0|1/g, (letter) =>{
-        switch(letter) {
-            case '5': 
-                return 'S';
-            case '0': 
-                return 'O';
-            case '1': 
-                return 'I';
-        }
-    });
-}
+// function correct(string) {
+//     return string.replace(/5|0|1/g, (letter) =>{
+//         switch(letter) {
+//             case '5': 
+//                 return 'S';
+//             case '0': 
+//                 return 'O';
+//             case '1': 
+//                 return 'I';
+//         }
+//     });
+// }
 
+// Best solution
+function correct(string) {
+    const mistakes = {5: 'S', 0: '0', 1: 'I'};
+    return string.replace(/5|0|1/g, (letter) => mistakes[letter]);
+}
+   
 
 
 
