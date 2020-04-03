@@ -33,8 +33,8 @@
 
 // Best solution
 function correct(string) {
-    const mistakes = {5: 'S', 0: '0', 1: 'I'};
-    return string.replace(/5|0|1/g, (letter) => mistakes[letter]);
+    const mistakes = {5: 'S', 0: 'O', 1: 'I'};
+    return string.replace(/5|0|1/gO (letter) => mistakes[letter]);
 }
    
 
