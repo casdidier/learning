@@ -29,18 +29,6 @@ function cakes(recipe, available) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 const recipeA    = {flour: 500, sugaokokokr: 200, eggs: 1};
 const availableA = {flour: 1200, sugar: 1200, eggs: 5, milk: 200};
 console.log(cakes(recipeA, availableA), 2, 'Wrong result for example #1');
