@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/casdidier/javascript-exercices#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "eslint": "^6.8.0"
   },
   "dependencies": {
+    "execution-time": "^1.4.1",
     "typescript": "^3.8.3"
   }
 }
