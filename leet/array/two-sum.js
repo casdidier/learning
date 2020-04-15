@@ -1,4 +1,4 @@
-import { measurePerf, benchmark } from '../../utils';
+import { benchmark } from '../../utils';
 
 // https://leetcode.com/problems/two-sum/#
 
