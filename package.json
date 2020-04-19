@@ -1,38 +1,39 @@
 {
-  "name": "javascript-exercices",
-  "version": "1.0.0",
+  "name"       : "javascript-exercices",
+  "version"    : "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
+  "main"       : "index.js",
+  "scripts"    : {
     "lint": "eslint ./src/*",
     "test": "jest",
-    "ci": "npm run lint && npm run test -- --coverage"
+    "jest": "jest",
+    "ci"  : "npm run lint && npm run test -- --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/casdidier/javascript-exercices.git"
+    "url" : "git+https://github.com/casdidier/javascript-exercices.git"
   },
-  "author": "",
+  "author" : "",
   "license": "ISC",
-  "bugs": {
+  "bugs"   : {
     "url": "https://github.com/casdidier/javascript-exercices/issues"
   },
-  "homepage": "https://github.com/casdidier/javascript-exercices#readme",
+  "homepage"       : "https://github.com/casdidier/javascript-exercices#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@types/jest": "^24.0.15",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jest": "^22.7.1",
+    "@babel/cli"            : "^7.4.4",
+    "@babel/preset-env"     : "^7.4.5",
+    "@types/jest"           : "^24.0.15",
+    "eslint"                : "^6.8.0",
+    "eslint-config-airbnb"  : "^17.1.0",
+    "eslint-plugin-import"  : "^2.18.0",
+    "eslint-plugin-jest"    : "^22.7.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.14.2",
-    "husky": "^2.5.0",
-    "jest": "^24.8.0"
+    "eslint-plugin-react"   : "^7.14.2",
+    "husky"                 : "^2.5.0",
+    "jest"                  : "^24.9.0"
   },
   "dependencies": {
     "execution-time": "^1.4.1",
-    "typescript": "^3.8.3"
+    "typescript"    : "^3.8.3"
   }
 }
