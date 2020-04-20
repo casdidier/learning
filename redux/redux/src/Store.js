@@ -25,12 +25,15 @@ const messageReducer = (state = [], action) => {
 const store = Redux.createStore(messageReducer);
 
 // React:
+const Provider = ReactRedux.Provider;
+const connect  = ReactRedux.connect;
+
+// Change code below this line
 class Presentational extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input   : '',
-      messages: []
+      input: ''
     }
     this.handleChange  = this.handleChange.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
@@ -41,10 +44,9 @@ class Presentational extends React.Component {
     });
   }
   submitMessage() {
-    const currentMessage = this.state.input;
+    this.props.submitNewMessage(this.state.input)
     this.setState({
-      input   : '',
-      messages: this.state.messages.concat(currentMessage)
+      input: ''
     });
   }
   render() {
@@ -56,7 +58,7 @@ class Presentational extends React.Component {
           onChange = {this.handleChange} /><br />
         <button onClick={this.submitMessage}>Submit</button>
         <ul>
-          {this.state.messages.map((message, idx) => {
+          {this.props.messages.map((message, idx) => {
             return (
               <li key={idx}>{message}</li>
             )
@@ -67,36 +69,28 @@ class Presentational extends React.Component {
     );
   }
 };
+// Change code above this line
 
-// React-Redux:
 const mapStateToProps = (state) => {
   return { messages: state }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitNewMessage: (newMessage) => {
-      dispatch(addMessage(newMessage))
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message))
     }
   }
 };
 
-const Provider = ReactRedux.Provider;
-const connect  = ReactRedux.connect;
-
-// define the Container component here:
-const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational)
+const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
 
 class AppWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    // complete the return statement:
     return (
       <Provider store={store}>
         <Container />
       </Provider>
-    )
+    );
   }
 };
