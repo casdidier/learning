@@ -13,19 +13,33 @@
 //     .filter(x => x !== null);
 // };
 
+// function deleteNth(arr, n) {
+//   const counts = {};
+//   const result = [];
+
+//   arr.forEach((currentNumber) => {
+//     if (!counts[currentNumber] || counts[currentNumber] < n) {
+//       result.push(currentNumber);
+//       counts[currentNumber] = counts[currentNumber] || 0;
+//       counts[currentNumber]++;
+//     }
+//   });
+
+//   return result;
+// }
+
+// react way
 function deleteNth(arr, n) {
-  const counts = {};
-  const result = [];
-
-  arr.forEach((currentNumber) => {
-    if (!counts[currentNumber] || counts[currentNumber] < n) {
-      result.push(currentNumber);
-      counts[currentNumber] = counts[currentNumber] || 0;
-      counts[currentNumber]++;
+  return arr.reduce((state, currentNumber) => {
+    if (!state.counts[currentNumber] || state.counts[currentNumber] < n) {
+      state.counts[currentNumber] = (state.counts[currentNumber] || 0) + 1;
+      state.result.push(currentNumber);
     }
-  });
-
-  return result;
+    return state;
+  }, {
+    counts: {},
+    result: [],
+  }).result;
 }
 
 
