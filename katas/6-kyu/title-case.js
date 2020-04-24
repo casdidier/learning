@@ -76,6 +76,12 @@ function titleCase(title, minorWords = '') {
       if (i && checkMinorWords.includes(word)) return word;
       return capitalize(word);
     }).join(' ');
+
+
+  // very short
+  function titleCase(t, mW = '', m = mW.toLowerCase().split(' ')) {
+    return t === '' ? t: t.toLowerCase().split(' ').map((n, i) => (i && m.includes(n) ? n : n[0].toUpperCase() + n.slice(1))).join(' ');
+  }
 }
 // console.log(titleCase('') === '');
 console.log(titleCase('a clash of KINGS', 'a an the of') === 'A Clash of Kings');
