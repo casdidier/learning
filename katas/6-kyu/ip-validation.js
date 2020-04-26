@@ -1,32 +1,55 @@
 // https://www.codewars.com/kata/ip-validation/train/javascript
 
+// function isValidIP(str) {
+//   const ipFormat = str.split('.');
+
+//   if (ipFormat.length !== 4) return false;
+
+//   // below 255
+//   const isBelow255 = arr => (arr.every(x => Number(x) <= 255));
+//   // is number
+//   const isNuneric = arr => (arr.every(x => typeof Number(x) === 'number'));
+//   // positive number
+//   const isPositive = arr => (arr.every(x => Number(x) >= 0));
+
+//   // start number is 0,1,2
+//   const isCorrectStartNumber = arr => (arr.every(x => x.split('').length === 3 && [0, 1, 2].includes(!!Number(x.split('')[0]))));
+
+
+//   // includes spaces
+//   const containsSpace = arr => (arr.some(x => x.includes(' ') === true));
+
+//   if (!isBelow255(ipFormat)) { return false; }
+//   if (!isNuneric(ipFormat)) { return false; }
+//   if (containsSpace(ipFormat)) { return false; }
+//   if (!isPositive(ipFormat)) { return false; }
+//   if (!isCorrectStartNumber(ipFormat)) { return false; }
+
+
+//   return true;
+// }
+
+
 function isValidIP(str) {
-  const ipFormat = str.split('.');
+  // split string on period
+  const octets = str.split('.');
+  // if length is not 4
+  if (octets.length !== 4) {
+    return false;
+  }
 
-  if (ipFormat.length !== 4) return false;
+  // iterate over octets
+  return octets.every((value) => {
+    if (!value.match(/^\d+$/)) {
+      return false;
+    } if (value < 0 || value > 255) {
+      return false;
+    } if (value.length > 1 && value[0] === '0') {
+      return false;
+    }
 
-  // below 255
-  const isBelow255 = arr => (arr.every(x => Number(x) <= 255));
-  // is number
-  const isNuneric = arr => (arr.every(x => typeof Number(x) === 'number'));
-  // positive number
-  const isPositive = arr => (arr.every(x => Number(x) >= 0));
-
-  // start number is 0,1,2
-  const isCorrectStartNumber = arr => (arr.every(x => x.split('').length === 3 && [0, 1, 2].includes(!!Number(x.split('')[0]))));
-
-
-  // includes spaces
-  const containsSpace = arr => (arr.some(x => x.includes(' ') === true));
-
-  if (!isBelow255(ipFormat)) { return false; }
-  if (!isNuneric(ipFormat)) { return false; }
-  if (containsSpace(ipFormat)) { return false; }
-  if (!isPositive(ipFormat)) { return false; }
-  if (!isCorrectStartNumber(ipFormat)) { return false; }
-
-
-  return true;
+    return true;
+  });
 }
 
 
