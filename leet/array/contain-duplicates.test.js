@@ -1,5 +1,8 @@
 const containsDuplicate = require('./contain-duplicates');
 
+console.log(containsDuplicate);
+
+
 test('containsDuplicate', () => {
   expect(containsDuplicate([1, 2, 3, 1])).toBe(true);
 });
