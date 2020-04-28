@@ -16,10 +16,25 @@
 //   }
 // }
 
-// more functionnal
 function findUniq(arr) {
-  return +arr.filter((value) => { return arr.indexOf(value) == arr.lastIndexOf(value); });
+  const uniq = {};
+  let result;
+  arr.forEach((item) => {
+    uniq[item] = (uniq[item] || 0) + 1;
+  });
+  Object.keys(uniq).forEach((key) => {
+    if (uniq[key] === 1) {
+      result = key;
+    }
+  });
+
+  return parseFloat(result);
 }
+
+// more functionnal
+// function findUniq(arr) {
+//   return +arr.filter((value) => { return arr.indexOf(value) == arr.lastIndexOf(value); });
+// }
 
 console.log(findUniq([0, 1, 0]), 1);
 console.log(findUniq([1, 1, 1, 2, 1, 1]), 2);
