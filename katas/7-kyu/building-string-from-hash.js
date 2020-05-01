@@ -24,6 +24,11 @@
 //     }, '');
 // }
 
+// destructuring
+const solution = pairs => Object.entries(pairs)
+  .map(([key, value]) => `${key} = ${value}`)
+  .join(',');
+
 // immutable
 function soluction(x) {
   return Object.keys(x)
