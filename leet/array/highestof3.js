@@ -8,10 +8,10 @@ function highestProductOf3(arrayOfInts) {
   // We could also start these as null and check below if they're set
   // but this is arguably cleaner
   let highest = Math.max(arrayOfInts[0], arrayOfInts[1]);
-  let lowest  = Math.min(arrayOfInts[0], arrayOfInts[1]);
+  let lowest = Math.min(arrayOfInts[0], arrayOfInts[1]);
 
   let highestProductOf2 = arrayOfInts[0] * arrayOfInts[1];
-  let lowestProductOf2  = arrayOfInts[0] * arrayOfInts[1];
+  let lowestProductOf2 = arrayOfInts[0] * arrayOfInts[1];
 
   // Except this one--we pre-populate it for the first *3* items
   // This means in our first pass it'll check against itself, which is fine
@@ -75,39 +75,39 @@ function assertThrowsError(func, desc) {
   }
 }
 
-let desc     = 'short array';
-let actual   = highestProductOf3([1, 2, 3, 4]);
+let desc = 'short array';
+let actual = highestProductOf3([1, 2, 3, 4]);
 let expected = 24;
 assertEqual(actual, expected, desc);
 
-desc     = 'longer array';
-actual   = highestProductOf3([6, 1, 3, 5, 7, 8, 2]);
+desc = 'longer array';
+actual = highestProductOf3([6, 1, 3, 5, 7, 8, 2]);
 expected = 336;
 assertEqual(actual, expected, desc);
 
-desc     = 'array has one negative';
-actual   = highestProductOf3([-5, 4, 8, 2, 3]);
+desc = 'array has one negative';
+actual = highestProductOf3([-5, 4, 8, 2, 3]);
 expected = 96;
 assertEqual(actual, expected, desc);
 
-desc     = 'array has two negatives';
-actual   = highestProductOf3([-10, 1, 3, 2, -10]);
+desc = 'array has two negatives';
+actual = highestProductOf3([-10, 1, 3, 2, -10]);
 expected = 300;
 assertEqual(actual, expected, desc);
 
-desc     = 'array is all negatives';
-actual   = highestProductOf3([-5, -1, -3, -2]);
+desc = 'array is all negatives';
+actual = highestProductOf3([-5, -1, -3, -2]);
 expected = -6;
 assertEqual(actual, expected, desc);
 
-      desc       = 'error with empty array';
+desc = 'error with empty array';
 const emptyArray = () => (highestProductOf3([]));
 assertThrowsError(emptyArray, desc);
 
-      desc      = 'error with one number';
+desc = 'error with one number';
 const oneNumber = () => (highestProductOf3([1]));
 assertThrowsError(oneNumber, desc);
 
-      desc      = 'error with two numbers';
+desc = 'error with two numbers';
 const twoNumber = () => (highestProductOf3([1, 1]));
 assertThrowsError(twoNumber, desc);
