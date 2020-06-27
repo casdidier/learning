@@ -7,7 +7,7 @@ class WordCloudData {
   populateWordsToCounts(inputString) {
     // Count the frequency of each word
     inputString.split(' ').forEach((word) => {
-      if (this.wordsToCounts.has(word)) { this.wordsToCounts.get(word).val++; } else {
+      if (this.wordsToCounts.has(word)) { this.wordsToCounts.set(word, this.wordsToCounts.get(word) + 1); } else {
         this.wordsToCounts.set(word, 1);
       }
     });
@@ -46,16 +46,16 @@ function assert(condition, desc) {
 // might have to edit some of these tests if you made
 // different design decisions in your solution.
 
-const desc = 'simple sentence';
-const actual = new WordCloudData('I like cake').wordsToCounts;
-const expected = new Map([['I', 1], ['like', 1], ['cake', 1]]);
+let desc = 'simple sentence';
+let actual = new WordCloudData('I like cake').wordsToCounts;
+let expected = new Map([['I', 1], ['like', 1], ['cake', 1]]);
 assert(isMapsEqual(actual, expected), desc);
 
-// desc = 'longer sentence';
-// actual = new WordCloudData('Chocolate cake for dinner and pound cake for dessert').wordsToCounts;
-// expected = new Map([['and', 1], ['pound', 1], ['for', 2], ['dessert', 1],
-//   ['Chocolate', 1], ['dinner', 1], ['cake', 2]]);
-// assert(isMapsEqual(actual, expected), desc);
+desc = 'longer sentence';
+actual = new WordCloudData('Chocolate cake for dinner and pound cake for dessert').wordsToCounts;
+expected = new Map([['and', 1], ['pound', 1], ['for', 2], ['dessert', 1],
+['Chocolate', 1], ['dinner', 1], ['cake', 2]]);
+assert(isMapsEqual(actual, expected), desc);
 
 // desc = 'punctuation';
 // actual = new WordCloudData('Strawberry short cake? Yum!').wordsToCounts;
