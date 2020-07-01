@@ -5,15 +5,20 @@ class WordCloudData {
   }
 
   populateWordsToCounts(inputString) {
+    // define a regex for splitting
+    const re = /(\s|(\s-\s))/g;
+
+    console.log(inputString.split(re));
+
     // Count the frequency of each word
-    inputString.split(' ').forEach((word) => {
+    inputString.split(re).forEach((word) => {
       const cleanWord = this.removePunctuation(word);
       if (this.wordsToCounts.has(cleanWord)) { this.wordsToCounts.set(cleanWord, this.wordsToCounts.get(cleanWord) + 1); } else {
         this.wordsToCounts.set(cleanWord, 1);
       }
     });
 
-    console.log(this.wordsToCounts);
+    // console.log(this.wordsToCounts);
   }
 
   removePunctuation(word) {
@@ -69,10 +74,10 @@ actual = new WordCloudData('Strawberry short cake? Yum!').wordsToCounts;
 expected = new Map([['cake', 1], ['Strawberry', 1], ['short', 1], ['Yum', 1]]);
 assert(isMapsEqual(actual, expected), desc);
 
-// desc = 'hyphenated Words';
-// actual = new WordCloudData('Dessert - mille-feuille cake').wordsToCounts;
-// expected = new Map([['cake', 1], ['Dessert', 1], ['mille-feuille', 1]]);
-// assert(isMapsEqual(actual, expected), desc);
+desc = 'hyphenated Words';
+actual = new WordCloudData('Dessert - mille-feuille cake').wordsToCounts;
+expected = new Map([['cake', 1], ['Dessert', 1], ['mille-feuille', 1]]);
+assert(isMapsEqual(actual, expected), desc);
 
 // desc = 'ellipses between words';
 // actual = new WordCloudData('Mmm...mmm...decisions...decisions').wordsToCounts;
