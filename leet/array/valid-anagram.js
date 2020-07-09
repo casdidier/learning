@@ -22,18 +22,14 @@ const isAnagram = function (s, t) {
   // verify same number of letters
   if (s.length !== t.length) return false;
 
-  // verify same number of each letter
-  const newOrderedWords = [];
-  [s, t].forEach(word => newOrderedWords.push(word.split('').sort(sortThings).join('')));
-
-  // put in the same order the two words
-  for (let i = 0; i < newOrderedWords.length - 1; i++) {
-    const element1 = newOrderedWords[i];
-    const element2 = newOrderedWords[i + 1];
-    for (let j = 0; j < newOrderedWords.length - 1; j++) {
-      const letter1 = element1[j];
-      const letter2 = element2[j];
-      if (letter1 !== letter2) return false;
+  const counter = new Map();
+  for (let i = 0; i < s.length; i++) {
+    counter.set([s.charAt(i)], counter.get(s.charAt(i)) + 1);
+    counter.set([t.charAt(i)], counter.get(t.charAt(i)) - 1);
+  }
+  for (const count of counter.values()) {
+    if (count !== 0) {
+      return false;
     }
   }
   return true;
