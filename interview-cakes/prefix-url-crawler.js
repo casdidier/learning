@@ -1,3 +1,5 @@
+// https://www.interviewcake.com/question/javascript/compress-url-list
+
 class Trie {
   constructor() {
     this.rootNode = {};
