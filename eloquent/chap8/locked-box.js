@@ -10,19 +10,15 @@ const box = {
 };
 
 function withBoxUnlocked(body) {
-  // Your code here.
+  const { locked } = box;
+  if (!locked) {
+    return body();
+  }
 
-  // unlock the box
   box.unlock();
-
-  // runs the function body
   try {
-    body();
-    console.log(box._content);
-  } catch (e) {
-    console.log(e);
+    return body();
   } finally {
-    // ensure the box is locked
     box.lock();
   }
 }
