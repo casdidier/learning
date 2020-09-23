@@ -15,12 +15,12 @@ function recycle(arr) {
 }
 
 
-// reducer technique 
+// reducer technique
 const recycle = a => a.reduce((r, e) => {
   r[rule[e.material]].push(e.type);
   if (e.secondMaterial) r[rule[e.secondMaterial]].push(e.type);
   return r;
-}, [[],[],[],[]]);
+}, [[], [], [], []]);
 
 const rule = {
   paper: 0,
@@ -28,3 +28,11 @@ const rule = {
   organic: 2,
   plastic: 3
 };
+
+
+// shortest solution FP approach
+const recyclerMaterials = ['paper', 'glass', 'organic', 'plastic'];
+
+function recycle(objects) {
+  return recyclerMaterials.map(m => objects.filter(o => o.material == m || o.secondMaterial == m).map(o => o.type));
+}
